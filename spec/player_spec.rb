@@ -13,7 +13,6 @@ describe Player do
   end
 
   context "players options" do
-
     it "player can choose rock" do
       player = Player.new("Himalee")
       expect(player.rock).to eql("rock")

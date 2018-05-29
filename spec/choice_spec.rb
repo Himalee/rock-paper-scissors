@@ -16,14 +16,4 @@ describe Choice do
       expect(@choice.first_choice("paper")).to eql("paper")
     end
   end
-
-  context "second go" do
-
-    it "returns rock, given rock (first go)" do
-
-    end
-  end
-
-
-
 end

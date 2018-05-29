@@ -23,5 +23,4 @@ class Choice
   def scissors
     "scissors"
   end
-
-end 
+end
