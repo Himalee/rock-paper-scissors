@@ -37,4 +37,21 @@ describe Rules do
       expect(rules.outcome()).to eql("paper")
     end
   end
+
+  context "draws" do
+    it "rock draws with rock" do
+      rules = Rules.new("rock", "rock")
+      expect(rules.outcome()).to eql("draw")
+    end
+
+    it "paper draws with paper" do
+      rules = Rules.new("paper", "paper")
+      expect(rules.outcome()).to eql("draw")
+    end
+
+    it "paper draws with scissors" do
+      rules = Rules.new("scissors", "scissors")
+      expect(rules.outcome()).to eql("draw")
+    end
+  end
 end

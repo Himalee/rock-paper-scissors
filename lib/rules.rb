@@ -7,7 +7,9 @@ class Rules
 
   def outcome
     turn = [@option_one, @option_two]
-    if turn.include?("rock") and turn.include?("scissors")
+    if @option_one == @option_two
+      "draw"
+    elsif turn.include?("rock") and turn.include?("scissors")
       "rock"
     elsif turn.include?("paper") and turn.include?("rock")
       "paper"
