@@ -21,7 +21,7 @@ class Game
   end
 
   def player_prompt
-    @display.present(@messages.user_prompt)
+    @display.present(@messages.welcome_message)
   end
 
   def determine_winner

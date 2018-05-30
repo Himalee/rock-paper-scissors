@@ -1,6 +1,6 @@
 class Messages
 
-  def user_prompt
+  def welcome_message
     "Welcome to rock, paper or scissors!"
   end
 
