@@ -13,14 +13,14 @@ class Game
   end
 
   def run
-    player_prompt
-    @player_one.take_choice
-    @player_two.take_choice
+    welcome_users
+    @player_one.take_player_choice
+    @player_two.take_player_choice
     determine_winner
-    winner
+    present_winner
   end
 
-  def player_prompt
+  def welcome_users
     @display.present(@messages.welcome_message)
   end
 
@@ -29,7 +29,7 @@ class Game
     @winning_option = rules.outcome
   end
 
-  def winner
+  def present_winner
     if @winning_option == "draw"
       @display.present(@messages.draw)
     elsif @winning_option == @player_one.user_input
