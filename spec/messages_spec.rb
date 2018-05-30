@@ -8,7 +8,7 @@ describe Messages do
     expect(messages.user_prompt()).to eql("Welcome to rock, paper or scissors!")
   end
 
-  it " returns message when player one wins" do
+  it "returns message when player one wins" do
     expect(messages.winning_message("Himalee")).to eql("Himalee wins!")
   end
 

@@ -5,10 +5,11 @@ require_relative "player"
 
 class Game
 
-  def initialize(player_one, player_two, display)
+  def initialize(player_one, player_two, display, messages)
     @player_one = player_one
     @player_two = player_two
     @display = display
+    @messages = messages
   end
 
   def run
@@ -20,7 +21,7 @@ class Game
   end
 
   def player_prompt
-    @display.present(Messages.new.user_prompt)
+    @display.present(@messages.user_prompt)
   end
 
   def determine_winner
@@ -30,19 +31,11 @@ class Game
 
   def winner
     if @winning_option == "draw"
-      @display.present(Messages.new.draw)
+      @display.present(@messages.draw)
     elsif @winning_option == @player_one.user_input
-      @display.present(Messages.new.winning_message(@player_one.name))
+      @display.present(@messages.winning_message(@player_one.name))
     else
-      @display.present(Messages.new.winning_message(@player_two.name))
+      @display.present(@messages.winning_message(@player_two.name))
     end
   end
 end
-
-
-
-# display = Display.new
-# player_one = Player.new("Himalee", display)
-# player_two = Player.new("Devlin", display)
-# game = Game.new(player_one, player_two, display)
-# game.run
