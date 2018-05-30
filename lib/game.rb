@@ -13,7 +13,8 @@ class Game
 
   def run
     player_prompt
-    player_choices
+    @player_one.take_choice
+    @player_two.take_choice
     determine_winner
     winner
   end
@@ -22,22 +23,15 @@ class Game
     @display.present(Messages.new.user_prompt)
   end
 
-  def player_choices
-    @display.present(Messages.new.player_prompt(@player_one.name))
-    @user_input_one = @display.receive
-    @display.present(Messages.new.player_prompt(@player_two.name))
-    @user_input_two = @display.receive
-  end
-
   def determine_winner
-    rules = Rules.new(@user_input_one, @user_input_two)
+    rules = Rules.new(@player_one.user_input, @player_two.user_input)
     @winning_option = rules.outcome
   end
 
   def winner
     if @winning_option == "draw"
       @display.present(Messages.new.draw)
-    elsif @winning_option == @user_input_one
+    elsif @winning_option == @player_one.user_input
       @display.present(Messages.new.winning_message(@player_one.name))
     else
       @display.present(Messages.new.winning_message(@player_two.name))
@@ -46,8 +40,9 @@ class Game
 end
 
 
-# player_one = Player.new("Himalee")
-# player_two = Player.new("Daisy")
+
 # display = Display.new
+# player_one = Player.new("Himalee", display)
+# player_two = Player.new("Devlin", display)
 # game = Game.new(player_one, player_two, display)
 # game.run

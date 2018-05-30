@@ -17,4 +17,6 @@ class Rules
       "scissors"
     end
   end
+
+  # player one wins when...., draws when.., loses when..
 end
