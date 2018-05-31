@@ -1,7 +1,7 @@
-require_relative "display"
-require_relative "messages"
-require_relative "rules"
-require_relative "player"
+require "display"
+require "messages"
+require "rules"
+require "player"
 
 class Game
 
@@ -14,8 +14,8 @@ class Game
 
   def run
     welcome_users
-    @player_one.take_player_choice
-    @player_two.take_player_choice
+    @player_one.choose
+    @player_two.choose
     determine_winner
     present_winner
   end

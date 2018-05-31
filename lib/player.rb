@@ -19,7 +19,7 @@ class Player
     "scissors"
   end
 
-  def take_player_choice
+  def choose
     @display.present(Messages.new.player_prompt(@name))
     @user_input = @display.receive
   end
