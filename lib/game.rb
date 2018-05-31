@@ -1,7 +1,7 @@
-require "display"
-require "messages"
-require "rules"
-require "player"
+require_relative "display"
+require_relative "messages"
+require_relative "rules"
+require_relative "player"
 
 class Game
 
