@@ -1,6 +1,6 @@
 class Player
 
-  attr_reader :name, :user_input
+  attr_reader :name
 
   def initialize(name, display)
     @name = name
@@ -17,10 +17,5 @@ class Player
 
   def scissors
     "scissors"
-  end
-
-  def choose
-    @display.present(Messages.new.player_prompt(@name))
-    @user_input = @display.receive
   end
 end

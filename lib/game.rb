@@ -1,7 +1,8 @@
 require_relative "display"
 require_relative "messages"
-require_relative "rules"
 require_relative "player"
+require_relative "human_player"
+require_relative "computer_player"
 
 class Game
 
@@ -12,27 +13,37 @@ class Game
     @messages = messages
   end
 
-  def run
+  def play
     welcome_users
-    @player_one.choose
-    @player_two.choose
-    determine_winner
-    present_winner
+    @player_one.get_input
+    @player_two.get_input
+    result = option_one_result(@player_one.player_input, @player_two.player_input)
+    present_winner(result)
   end
 
   def welcome_users
     @display.present(@messages.welcome_message)
   end
 
-  def determine_winner
-    rules = Rules.new(@player_one.user_input, @player_two.user_input)
-    @winning_option = rules.outcome
+  def option_one_result(option_one, option_two)
+    turn = [option_one, option_two]
+    if option_one == option_two
+      "draw"
+    elsif turn.include?("rock") and turn.include?("scissors") and option_one == "rock"
+      "win"
+    elsif turn.include?("paper") and turn.include?("rock") and option_one == "paper"
+      "win"
+    elsif turn.include?("paper") and turn.include?("scissors") and option_one == "scissors"
+      "win"
+    else
+      "error"
+    end
   end
 
-  def present_winner
-    if @winning_option == "draw"
+  def present_winner(result)
+    if result == "draw"
       @display.present(@messages.draw)
-    elsif @winning_option == @player_one.user_input
+    elsif result == "win"
       @display.present(@messages.winning_message(@player_one.name))
     else
       @display.present(@messages.winning_message(@player_two.name))
