@@ -2,40 +2,32 @@ require "game"
 
 describe Game do
 
-  before (:each) do
-    @output = StringIO.new
-    @messages = Messages.new
+  before(:each) do
+    @player_one = double(HumanPlayer)
+    @player_two = double(HumanPlayer)
+    @display = double(Display)
+    @messages = double(Messages)
   end
 
-  context "human vs human" do
-    it "runs game with rock and paper" do
-      input = StringIO.new("rock\npaper")
-      display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
-      game = Game.new(player_one, player_two, display, @messages)
-      game.play
-      expect(@output.string).to include("Daisy wins")
+  describe '#option_one_result()' do
+    it "returns win with paper and rock" do
+      game = Game.new(@player_one, @player_two, @display, @messages)
+      expect(game.option_one_result("paper", "rock")).to eql("win")
     end
 
-    it "runs game with rock and paper" do
-      input = StringIO.new("scissors\npaper")
-      display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
-      game = Game.new(player_one, player_two, display, @messages)
-      game.play
-      expect(@output.string).to include("Himalee wins")
+    it "returns win with rock and scissors" do
+      game = Game.new(@player_one, @player_two, @display, @messages)
+      expect(game.option_one_result("rock", "scissors")).to eql("win")
     end
 
-    it "runs game with rock and rock" do
-      input = StringIO.new("rock\nrock")
-      display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
-      game = Game.new(player_one, player_two, display, @messages)
-      game.play
-      expect(@output.string).to include("It's a draw!")
+    it "returns win with scissors and paper" do
+      game = Game.new(@player_one, @player_two, @display, @messages)
+      expect(game.option_one_result("scissors", "paper")).to eql("win")
+    end
+
+    it "returns draw with paper and paper" do
+      game = Game.new(@player_one, @player_two, @display, @messages)
+      expect(game.option_one_result("paper", "paper")).to eql("draw")
     end
   end
 end

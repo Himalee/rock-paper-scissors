@@ -6,16 +6,19 @@ class ComputerPlayer < Player
 
   def get_input
     @display.present(Messages.new.player_prompt(@name))
-    randomise
-    display_input
+    get_shape
+    display_shape
   end
 
-  def randomise
-    options = ["rock", "paper", "scissors"]
-    @player_input = options.sample
+  def random_shape
+    ["rock", "paper", "scissors"].sample
   end
 
-  def display_input
+  def get_shape
+    @player_input = random_shape
+  end
+
+  def display_shape
     @display.present(@player_input)
   end
 end

@@ -8,9 +8,9 @@ describe ComputerPlayer do
     display = Display.new(output, input)
     computer_player = ComputerPlayer.new("computer", display)
 
-    computer_player.randomise
-    computer_player.display_input
-    computer_player.player_input
+    computer_player.random_shape
+    computer_player.get_shape
+    computer_player.display_shape
 
     expect(output.string).to eql("rock\n").or(eq("paper\n")).or(eq("scissors\n"))
   end
