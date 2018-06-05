@@ -4,7 +4,7 @@ describe Player do
 
   let(:display) { spy(Display) }
 
-  context "names of players" do
+  context "position of players" do
     it "returns name of player" do
       player = Player.new("Himalee")
       expect(player.name).to eql("Himalee")

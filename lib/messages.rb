@@ -23,4 +23,8 @@ class Messages
   def invalid_input
     "Please enter 'rock', 'paper' or 'scissors'"
   end
+
+  def replay?
+    "Replay? Type 'y' for yes or 'n' for no"
+  end
 end
