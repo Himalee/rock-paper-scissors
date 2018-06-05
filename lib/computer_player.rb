@@ -2,12 +2,16 @@ require_relative "player"
 
 class ComputerPlayer < Player
 
-  attr_reader :player_input
+  attr_reader :player_input, :player_name
 
   def get_input
-    @display.present(Messages.new.player_prompt(@name))
+    @display.present(Messages.new.player_prompt(player_name))
     randomise
     display_input
+  end
+
+  def player_name
+    "Computer"
   end
 
   def randomise

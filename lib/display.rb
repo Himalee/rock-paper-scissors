@@ -26,5 +26,4 @@ class Display
   def valid_input?(option)
     option == "paper" || option == "rock" || option == "scissors"
   end
-
 end

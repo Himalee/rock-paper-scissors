@@ -8,44 +8,44 @@ describe Game do
   end
 
   context "human vs human" do
-    it "runs game with rock and paper" do
-      input = StringIO.new("rock\npaper")
+    it "runs one game with rock and paper" do
+      input = StringIO.new("himalee\nrock\ndaisy\npaper\nn")
       display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
+      player_one = HumanPlayer.new("one", display)
+      player_two = HumanPlayer.new("two", display)
       game = Game.new(player_one, player_two, display, @messages)
       game.play
-      expect(@output.string).to include("Daisy wins")
+      expect(@output.string).to include("daisy wins")
     end
 
-    it "runs game with rock and paper" do
-      input = StringIO.new("scissors\npaper")
+    it "runs one game with scissors and paper" do
+      input = StringIO.new("himalee\nscissors\ndaisy\npaper\nn")
       display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
+      player_one = HumanPlayer.new("one", display)
+      player_two = HumanPlayer.new("two", display)
       game = Game.new(player_one, player_two, display, @messages)
       game.play
-      expect(@output.string).to include("Himalee wins")
+      expect(@output.string).to include("himalee wins")
     end
 
-    it "runs game with rock and rock" do
-      input = StringIO.new("rock\nrock")
+    it "runs one game with rock and rock" do
+      input = StringIO.new("himalee\nrock\ndaisy\nrock\nn")
       display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
+      player_one = HumanPlayer.new("one", display)
+      player_two = HumanPlayer.new("two", display)
       game = Game.new(player_one, player_two, display, @messages)
       game.play
       expect(@output.string).to include("It's a draw!")
     end
 
-    it "runs game with one invalid input" do
-      input = StringIO.new("rock\nhello\npaper")
+    it "runs one game with one invalid input" do
+      input = StringIO.new("himalee\nrock\ndaisy\nhello\npaper\nn")
       display = Display.new(@output, input)
-      player_one = HumanPlayer.new("Himalee", display)
-      player_two = HumanPlayer.new("Daisy", display)
+      player_one = HumanPlayer.new("one", display)
+      player_two = HumanPlayer.new("two", display)
       game = Game.new(player_one, player_two, display, @messages)
       game.play
-      expect(@output.string).to include("Please enter 'rock', 'paper' or 'scissors'", "Daisy wins")
+      expect(@output.string).to include("Please enter 'rock', 'paper' or 'scissors'", "daisy wins")
     end
   end
 end

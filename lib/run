@@ -6,8 +6,8 @@ require_relative "messages"
 require_relative "game"
 
 display = Display.new
-player_one = HumanPlayer.new("Himalee", display)
-player_two = ComputerPlayer.new("Computer", display)
+player_one = HumanPlayer.new("one", display)
+player_two = ComputerPlayer.new("two", display)
 messages = Messages.new
 game = Game.new(player_one, player_two, display, messages)
 game.play

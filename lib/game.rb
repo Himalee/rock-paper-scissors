@@ -19,6 +19,7 @@ class Game
     @player_two.get_input
     result = option_one_result(@player_one.player_input, @player_two.player_input)
     present_winner(result)
+    play_again?
   end
 
   def welcome_users
@@ -44,9 +45,17 @@ class Game
     if result == "draw"
       @display.present(@messages.draw)
     elsif result == "win"
-      @display.present(@messages.winning_message(@player_one.name))
+      @display.present(@messages.winning_message(@player_one.player_name))
     else
-      @display.present(@messages.winning_message(@player_two.name))
+      @display.present(@messages.winning_message(@player_two.player_name))
+    end
+  end
+
+  def play_again?
+    @display.present(@messages.replay?)
+    answer = @display.receive
+    until answer != "y"
+      play
     end
   end
 end
