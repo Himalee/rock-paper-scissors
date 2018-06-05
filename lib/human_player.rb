@@ -4,6 +4,6 @@ class HumanPlayer < Player
 
   def get_input
     @display.present(Messages.new.player_prompt(@name))
-    @player_input = @display.receive
+    @player_input = @display.get_valid_input
   end
 end

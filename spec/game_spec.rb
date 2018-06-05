@@ -37,5 +37,15 @@ describe Game do
       game.play
       expect(@output.string).to include("It's a draw!")
     end
+
+    it "runs game with one invalid input" do
+      input = StringIO.new("rock\nhello\npaper")
+      display = Display.new(@output, input)
+      player_one = HumanPlayer.new("Himalee", display)
+      player_two = HumanPlayer.new("Daisy", display)
+      game = Game.new(player_one, player_two, display, @messages)
+      game.play
+      expect(@output.string).to include("Please enter 'rock', 'paper' or 'scissors'", "Daisy wins")
+    end
   end
 end

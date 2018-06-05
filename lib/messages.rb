@@ -19,4 +19,8 @@ class Messages
   def draw
     "It's a draw!"
   end
+
+  def invalid_input
+    "Please enter 'rock', 'paper' or 'scissors'"
+  end
 end
