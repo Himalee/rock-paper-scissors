@@ -1,9 +1,11 @@
 class HumanPlayer < Player
 
-  attr_reader :player_input
+  def initialize(name, console)
+    super(name)
+    @console = console
+  end
 
   def get_input
-    @display.present(Messages.new.player_prompt(@name))
-    @player_input = @display.receive
+    @player_input = @console.receive
   end
 end

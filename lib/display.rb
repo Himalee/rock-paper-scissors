@@ -1,15 +1,27 @@
 class Display
 
-  def initialize(output = $stdout, input = $stdin)
-    @output = output
-    @input = input
+  def initialize(console, messages)
+    @console = console
+    @messages = messages
   end
 
-  def present(message)
-    @output.puts message
+  def welcome_users
+    @console.present(@messages.welcome_message)
   end
 
-  def receive
-    @input.gets.chomp
+  def prompt_user_for_input(player)
+    @console.present(@messages.player_prompt(player))
+  end
+
+  def show_move(player_input)
+    @console.present(player_input)
+  end
+
+  def draw
+    @console.present(@messages.draw)
+  end
+
+  def present_winner(player)
+    @console.present(@messages.winning_message(player))
   end
 end

@@ -2,23 +2,11 @@ require_relative "player"
 
 class ComputerPlayer < Player
 
-  attr_reader :player_input
-
   def get_input
-    @display.present(Messages.new.player_prompt(@name))
-    get_shape
-    display_shape
+    random_hand_gesture
   end
 
-  def random_shape
-    ["rock", "paper", "scissors"].sample
-  end
-
-  def get_shape
-    @player_input = random_shape
-  end
-
-  def display_shape
-    @display.present(@player_input)
+  def random_hand_gesture
+    @player_input = ["rock", "paper", "scissors"].sample
   end
 end
