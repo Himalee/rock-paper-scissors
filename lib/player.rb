@@ -1,8 +1,8 @@
 class Player
 
-  attr_reader :name, :player_input
+  attr_reader :position, :player_input, :player_name
 
-  def initialize(name)
-    @name = name
+  def initialize(position)
+    @position = position
   end
 end

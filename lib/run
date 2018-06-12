@@ -13,7 +13,7 @@ move_validator = MoveValidator.new
 console = Console.new(move_validator)
 messages = Messages.new
 display = Display.new(console, messages)
-player_one = HumanPlayer.new("Himalee", console)
-player_two = ComputerPlayer.new("Computer")
+player_one = HumanPlayer.new(1, console)
+player_two = ComputerPlayer.new(2)
 game = Game.new(player_one, player_two, display, rules)
 game.play

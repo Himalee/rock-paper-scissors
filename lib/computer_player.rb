@@ -9,4 +9,8 @@ class ComputerPlayer < Player
   def random_hand_gesture
     @player_input = ["rock", "paper", "scissors"].sample
   end
+
+  def get_player_name
+    @player_name = "Computer"
+  end
 end

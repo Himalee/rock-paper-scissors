@@ -4,8 +4,8 @@ class Messages
     "Welcome to rock, paper or scissors!"
   end
 
-  def player_name(player)
-    "Player #{player}: Please enter your name"
+  def player_name(player_position)
+    "Player #{player_position}: Please enter your name"
   end
 
   def player_prompt(player)
@@ -24,7 +24,7 @@ class Messages
     "Please enter 'rock', 'paper' or 'scissors'"
   end
 
-  def replay?
+  def replay_message
     "Replay? Type 'y' for yes or 'n' for no"
   end
 end

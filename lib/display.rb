@@ -24,4 +24,16 @@ class Display
   def present_winner(player)
     @console.present(@messages.winning_message(player))
   end
+
+  def replay?
+    @console.present(@messages.replay_message)
+  end
+
+  def play_again
+    @console.receive == "y"
+  end
+
+  def get_name(player)
+    @console.present(@messages.player_name(player))
+  end
 end

@@ -20,10 +20,13 @@ class Game
     player_turn(@player_one)
     player_turn(@player_two)
     result
+    play_again?
   end
 
   def player_turn(player)
-    @display.prompt_user_for_input(player.name)
+    @display.get_name(player.position)
+    player.get_player_name
+    @display.prompt_user_for_input(player.player_name)
     player.get_input
     @display.show_move(player.player_input)
   end
@@ -39,16 +42,15 @@ class Game
   def winner
     result = @rules.winner?(:player_one => @player_one.player_input, :player_two => @player_two.player_input)
     if result == :player_one
-      @display.present_winner(@player_one.name)
+      @display.present_winner(@player_one.player_name)
     else
-      @display.present_winner(@player_two.name)
+      @display.present_winner(@player_two.player_name)
     end
   end
 
   def play_again?
-    @display.present(@messages.replay?)
-    answer = @display.receive
-    until answer != "y"
+    @display.replay?
+    if @display.play_again
       play
     end
   end

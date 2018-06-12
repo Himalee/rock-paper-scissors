@@ -11,10 +11,10 @@ describe Game do
 
   context "human vs human" do
     it "runs game with rock and paper" do
-      input = StringIO.new("rock\npaper")
+      input = StringIO.new("Himalee\nrock\nDaisy\npaper\nn")
       console = Console.new(@output, input, @move_validator)
-      player_one = HumanPlayer.new("Himalee", console)
-      player_two = HumanPlayer.new("Daisy", console)
+      player_one = HumanPlayer.new(1, console)
+      player_two = HumanPlayer.new(2, console)
       display = Display.new(console, @messages)
       game = Game.new(player_one, player_two, display, @rules)
       game.play
@@ -22,10 +22,10 @@ describe Game do
     end
 
     it "runs game with rock and paper" do
-      input = StringIO.new("scissors\npaper")
+      input = StringIO.new("Himalee\nscissors\nDaisy\npaper\nn")
       console = Console.new(@output, input, @move_validator)
-      player_one = HumanPlayer.new("Himalee", console)
-      player_two = HumanPlayer.new("Daisy", console)
+      player_one = HumanPlayer.new(1, console)
+      player_two = HumanPlayer.new(2, console)
       display = Display.new(console, @messages)
       game = Game.new(player_one, player_two, display, @rules)
       game.play
@@ -33,10 +33,10 @@ describe Game do
     end
 
     it "runs game with rock and rock" do
-      input = StringIO.new("rock\nrock")
+      input = StringIO.new("Himalee\nrock\nDaisy\nrock\nn")
       console = Console.new(@output, input, @move_validator)
-      player_one = HumanPlayer.new("Himalee", console)
-      player_two = HumanPlayer.new("Daisy", console)
+      player_one = HumanPlayer.new(1, console)
+      player_two = HumanPlayer.new(2, console)
       display = Display.new(console, @messages)
       game = Game.new(player_one, player_two, display, @rules)
       game.play
@@ -44,10 +44,10 @@ describe Game do
     end
 
     it "runs game with one invalid input" do
-      input = StringIO.new("rock\nhello\npaper")
+      input = StringIO.new("Himalee\nrock\nDaisy\nhello\npaper\nn")
       console = Console.new(@output, input, @move_validator)
-      player_one = HumanPlayer.new("Himalee", console)
-      player_two = HumanPlayer.new("Daisy", console)
+      player_one = HumanPlayer.new(1, console)
+      player_two = HumanPlayer.new(2, console)
       display = Display.new(console, @messages)
       game = Game.new(player_one, player_two, display, @rules)
       game.play
