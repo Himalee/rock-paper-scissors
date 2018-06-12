@@ -4,10 +4,14 @@ require_relative "display"
 require_relative "player"
 require_relative "messages"
 require_relative "game"
+require_relative "rules"
+require_relative "console"
 
-display = Display.new
-player_one = Player.new("Himalee", display)
-player_two = Player.new("Devlin", display)
+rules = Rules.new
+console = Console.new
 messages = Messages.new
-game = Game.new(player_one, player_two, display, messages)
-game.run
+display = Display.new(console, messages)
+player_one = HumanPlayer.new("Himalee", console)
+player_two = ComputerPlayer.new("Computer")
+game = Game.new(player_one, player_two, display, rules)
+game.play

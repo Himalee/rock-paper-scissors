@@ -2,56 +2,36 @@ require "rules"
 
 describe Rules do
 
-  context "rock wins" do
-    it "rocks beats scissors when rock is first" do
-      rules = Rules.new("rock", "scissors")
-      expect(rules.outcome()).to eql("rock")
+  before (:each) do
+    @rules = Rules.new
+  end
+
+  describe '#outcome()' do
+    it "returns rock with rock and scissors" do
+      expect(@rules.outcome(:player_one => "rock", :player_two => "scissors")).to eql("rock")
     end
 
-    it "rock beats scissors when scissors is first" do
-      rules = Rules.new("scissors", "rock")
-      expect(rules.outcome()).to eql("rock")
+    it "returns paper with rock and paper" do
+      expect(@rules.outcome(:player_one => "rock", :player_two => "paper")).to eql("paper")
+    end
+
+    it "returns scissors with scissors and paper" do
+      expect(@rules.outcome(:player_one =>"scissors", :player_two => "paper")).to eql("scissors")
     end
   end
 
-  context "scissors wins" do
-    it "scissors beats paper when scissors is first" do
-      rules = Rules.new("scissors", "paper")
-      expect(rules.outcome()).to eql("scissors")
+  describe '#winner?()' do
+    it "returns player_one with scissors and paper" do
+      expect(@rules.winner?(:player_one =>"scissors", :player_two => "paper")).to eql(:player_one)
     end
 
-    it "scissors beats paper when paper is first" do
-      rules = Rules.new("paper", "scissors")
-      expect(rules.outcome()).to eql("scissors")
+    it "returns player_two with rock and paper" do
+      expect(@rules.winner?(:player_one =>"rock", :player_two => "paper")).to eql(:player_two)
+    end
+
+    it "returns nil with rock and rock" do
+      expect(@rules.winner?(:player_one =>"rock", :player_two => "rock")).to eql(nil)
     end
   end
 
-  context "paper wins" do
-    it "paper beats rock when paper is first" do
-      rules = Rules.new("paper", "rock")
-      expect(rules.outcome()).to eql("paper")
-    end
-
-    it "paper beats rock when rock is first" do
-      rules = Rules.new("rock", "paper")
-      expect(rules.outcome()).to eql("paper")
-    end
-  end
-
-  context "draws" do
-    it "rock draws with rock" do
-      rules = Rules.new("rock", "rock")
-      expect(rules.outcome()).to eql("draw")
-    end
-
-    it "paper draws with paper" do
-      rules = Rules.new("paper", "paper")
-      expect(rules.outcome()).to eql("draw")
-    end
-
-    it "paper draws with scissors" do
-      rules = Rules.new("scissors", "scissors")
-      expect(rules.outcome()).to eql("draw")
-    end
-  end
 end

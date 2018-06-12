@@ -1,41 +1,46 @@
 require_relative "display"
 require_relative "messages"
-require_relative "rules"
 require_relative "player"
+require_relative "human_player"
+require_relative "computer_player"
+require_relative "rules"
 
 class Game
 
-  def initialize(player_one, player_two, display, messages)
+  def initialize(player_one, player_two, display, rules)
     @player_one = player_one
     @player_two = player_two
     @display = display
-    @messages = messages
+    @rules = rules
   end
 
-  def run
-    welcome_users
-    @player_one.choose
-    @player_two.choose
-    determine_winner
-    present_winner
+  def play
+    @display.welcome_users
+    player_turn(@player_one)
+    player_turn(@player_two)
+    result
   end
 
-  def welcome_users
-    @display.present(@messages.welcome_message)
+  def player_turn(player)
+    @display.prompt_user_for_input(player.name)
+    player.get_input
+    @display.show_move(player.player_input)
   end
 
-  def determine_winner
-    rules = Rules.new(@player_one.user_input, @player_two.user_input)
-    @winning_option = rules.outcome
-  end
-
-  def present_winner
-    if @winning_option == "draw"
-      @display.present(@messages.draw)
-    elsif @winning_option == @player_one.user_input
-      @display.present(@messages.winning_message(@player_one.name))
+  def result
+    if @player_one.player_input == @player_two.player_input
+      @display.draw
     else
-      @display.present(@messages.winning_message(@player_two.name))
+      winner
+    end
+  end
+
+  def winner
+    result = @rules.winner?(:player_one => @player_one.player_input, :player_two => @player_two.player_input)
+    if result == :player_one
+      @display.present_winner(@player_one.name)
+    else
+      @display.present_winner(@player_two.name)
     end
   end
 end

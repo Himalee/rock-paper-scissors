@@ -1,20 +1,25 @@
 class Rules
 
-  def initialize(option_one, option_two)
-    @option_one = option_one
-    @option_two = option_two
-  end
-
-  def outcome
-    turn = [@option_one, @option_two]
-    if @option_one == @option_two
-      "draw"
-    elsif turn.include?("rock") and turn.include?("scissors")
+  def outcome(turn)
+    if rock_wins(turn)
       "rock"
-    elsif turn.include?("paper") and turn.include?("rock")
+    elsif paper_wins(turn)
       "paper"
     else
       "scissors"
     end
+  end
+
+  def rock_wins(turn)
+    turn.has_value?("scissors") and turn.has_value?("rock")
+  end
+
+  def paper_wins(turn)
+    turn.has_value?("rock") and turn.has_value?("paper")
+  end
+
+  def winner?(turn)
+    winning_move = outcome(turn)
+    turn.key(winning_move)
   end
 end
