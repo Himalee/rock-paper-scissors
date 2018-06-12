@@ -6,9 +6,11 @@ require_relative "messages"
 require_relative "game"
 require_relative "rules"
 require_relative "console"
+require_relative "move_validator"
 
 rules = Rules.new
-console = Console.new
+move_validator = MoveValidator.new
+console = Console.new(move_validator)
 messages = Messages.new
 display = Display.new(console, messages)
 player_one = HumanPlayer.new("Himalee", console)
