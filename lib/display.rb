@@ -20,8 +20,11 @@ class Display
   def draw
     @console.present(@messages.draw)
   end
+<<<<<<< HEAD
 
   def present_winner(player)
     @console.present(@messages.winning_message(player))
   end
+=======
+>>>>>>> a4d31d74287bdcb822d1cba4b6714c2278ae6e98
 end
