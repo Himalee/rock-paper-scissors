@@ -24,19 +24,4 @@ class Display
   def present_winner(player)
     @console.present(@messages.winning_message(player))
   end
-
-  def get_valid_input
-    current_input = receive
-    if !valid_input?(current_input)
-      present(Messages.new.invalid_input)
-      get_valid_input
-    else
-      current_input
-    end
-  end
-
-  def valid_input?(option)
-    option == "paper" || option == "rock" || option == "scissors"
-  end
-
 end
