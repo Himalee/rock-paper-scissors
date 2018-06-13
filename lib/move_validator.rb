@@ -2,6 +2,6 @@ class MoveValidator
 
   def valid_move?(move)
    possible_moves = ["rock", "paper", "scissors"]
-   possible_moves.include?(move.downcase)
+   possible_moves.include?(move)
  end
 end

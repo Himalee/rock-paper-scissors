@@ -13,8 +13,5 @@ describe MoveValidator do
     expect(move_validator.valid_move?("rock")).to be true
     expect(move_validator.valid_move?("paper")).to be true
     expect(move_validator.valid_move?("scissors")).to be true
-    expect(move_validator.valid_move?("ROCK")).to be true
-    expect(move_validator.valid_move?("Paper")).to be true
-    expect(move_validator.valid_move?("ScIsSoRs")).to be true
   end
 end

@@ -15,7 +15,7 @@ class Console
   end
 
   def validated_input
-    choice = receive
+    choice = receive.downcase
     if !@move_validator.valid_move?(choice)
       present(Messages.new.invalid_input)
       validated_input
