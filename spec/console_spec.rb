@@ -31,4 +31,25 @@ describe Console do
     result = console.validated_input
     expect(result).to eql("scissors")
   end
+
+  it "validates game type input with 1" do
+    input = StringIO.new("hello\ndan\nshangela\n1\n")
+    console = Console.new(output, input, move_validator)
+    result = console.valid_game_type
+    expect(result).to eql("1")
+  end
+
+  it "validates game type input with 2" do
+    input = StringIO.new("hello\ndan\nshangela\n2\n")
+    console = Console.new(output, input, move_validator)
+    result = console.valid_game_type
+    expect(result).to eql("2")
+  end
+
+  it "validates game type input with 3" do
+    input = StringIO.new("hello\ndan\nshangela\n3\n")
+    console = Console.new(output, input, move_validator)
+    result = console.valid_game_type
+    expect(result).to eql("3")
+  end
 end

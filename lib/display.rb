@@ -14,7 +14,7 @@ class Display
   end
 
   def show_move(player_input)
-    @console.present(player_input)
+    @console.present("Choice: #{player_input}")
   end
 
   def draw
@@ -35,5 +35,13 @@ class Display
 
   def get_name(player)
     @console.present(@messages.player_name(player))
+  end
+
+  def choose_player
+    @console.present(@messages.game_mode)
+  end
+
+  def sets_up_game
+    @console.valid_game_type
   end
 end

@@ -7,13 +7,13 @@ require_relative "game"
 require_relative "rules"
 require_relative "console"
 require_relative "move_validator"
+require_relative "set_up"
 
 rules = Rules.new
 move_validator = MoveValidator.new
 console = Console.new(move_validator)
 messages = Messages.new
 display = Display.new(console, messages)
-player_one = HumanPlayer.new(1, console)
-player_two = ComputerPlayer.new(2)
-game = Game.new(player_one, player_two, display, rules)
+set_up = SetUp.new(console)
+game = Game.new(display, rules, set_up)
 game.play

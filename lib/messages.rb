@@ -27,4 +27,8 @@ class Messages
   def replay_message
     "Replay? Type 'y' for yes or 'n' for no"
   end
+
+  def game_mode
+    "Would you like to play:\n1.Human vs Human\n2.Human vs Computer\n3.Computer vs Human"
+  end
 end
