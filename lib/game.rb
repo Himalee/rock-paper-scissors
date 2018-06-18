@@ -22,7 +22,6 @@ class Game
     player_turn(player[0])
     player_turn(player[1])
     result(player[0], player[1])
-    play_again?
   end
 
   def player_turn(player)
@@ -47,13 +46,6 @@ class Game
       @display.present_winner(first_player.player_name)
     else
       @display.present_winner(second_player.player_name)
-    end
-  end
-
-  def play_again?
-    @display.replay?
-    if @display.play_again
-      play
     end
   end
 end
