@@ -4,24 +4,24 @@ class SetUp
     @console = console
   end
 
-  def human_player(position)
-    HumanPlayer.new(position, @console)
-  end
-
-  def computer_player(position)
-    ComputerPlayer.new(position)
+  def get_player(type, position)
+    if type == 'human'
+      HumanPlayer.new(position, @console)
+    elsif type == 'computer'
+      ComputerPlayer.new(position)
+    end
   end
 
   def human_vs_computer
-    [human_player(1), computer_player(2)]
+    [get_player('human', 1), get_player('computer', 2)]
   end
 
   def human_vs_human
-    [human_player(1), human_player(2)]
+    [get_player('human', 1), get_player('human', 2)]
   end
 
   def computer_vs_human
-    [computer_player(1), human_player(2)]
+    [get_player('computer', 1), get_player('human', 2)]
   end
 
   def players(choice)

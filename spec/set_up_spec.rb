@@ -3,6 +3,7 @@ require "human_player"
 require "computer_player"
 require "move_validator"
 require "console"
+require "player_factory"
 
 describe SetUp do
 

@@ -6,6 +6,7 @@ require_relative "rules"
 require_relative "console"
 require_relative "move_validator"
 require_relative "set_up"
+require_relative "player_factory"
 
 class Session
 

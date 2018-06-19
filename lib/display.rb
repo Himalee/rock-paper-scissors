@@ -14,7 +14,7 @@ class Display
   end
 
   def show_move(player_input)
-    @console.present("Choice: #{player_input}")
+    @console.present("choice: #{player_input}")
   end
 
   def draw
