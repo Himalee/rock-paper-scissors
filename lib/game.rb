@@ -4,43 +4,48 @@ require_relative "player"
 require_relative "human_player"
 require_relative "computer_player"
 require_relative "rules"
+require_relative "move_validator"
+require_relative "set_up"
 
 class Game
 
-  def initialize(player_one, player_two, display, rules)
-    @player_one = player_one
-    @player_two = player_two
+  def initialize(display, rules, set_up)
     @display = display
     @rules = rules
+    @set_up = set_up
   end
 
   def play
     @display.welcome_users
-    player_turn(@player_one)
-    player_turn(@player_two)
-    result
+    @display.choose_player
+    player = @set_up.game_mode(@display.sets_up_game)
+    player_turn(player[0])
+    player_turn(player[1])
+    result(player[0], player[1])
   end
 
   def player_turn(player)
-    @display.prompt_user_for_input(player.name)
+    @display.get_name(player.position)
+    player.get_player_name
+    @display.prompt_user_for_input(player.player_name)
     player.get_input
     @display.show_move(player.player_input)
   end
 
-  def result
-    if @player_one.player_input == @player_two.player_input
+  def result(first_player, second_player)
+    if first_player.player_input == second_player.player_input
       @display.draw
     else
-      winner
+      winner(first_player, second_player)
     end
   end
 
-  def winner
-    result = @rules.winner?(:player_one => @player_one.player_input, :player_two => @player_two.player_input)
+  def winner(first_player, second_player)
+    result = @rules.winner?(:player_one => first_player.player_input, :player_two => second_player.player_input)
     if result == :player_one
-      @display.present_winner(@player_one.name)
+      @display.present_winner(first_player.player_name)
     else
-      @display.present_winner(@player_two.name)
+      @display.present_winner(second_player.player_name)
     end
   end
 end

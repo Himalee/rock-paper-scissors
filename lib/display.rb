@@ -14,7 +14,7 @@ class Display
   end
 
   def show_move(player_input)
-    @console.present(player_input)
+    @console.present("choice: #{player_input}")
   end
 
   def draw
@@ -23,5 +23,25 @@ class Display
 
   def present_winner(player)
     @console.present(@messages.winning_message(player))
+  end
+
+  def replay?
+    @console.present(@messages.replay_message)
+  end
+
+  def play_again
+    @console.receive == "y"
+  end
+
+  def get_name(player)
+    @console.present(@messages.player_name(player))
+  end
+
+  def choose_player
+    @console.present(@messages.game_mode)
+  end
+
+  def sets_up_game
+    @console.valid_game_type
   end
 end

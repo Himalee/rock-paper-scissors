@@ -9,7 +9,7 @@ describe Messages do
   end
 
   it "returns message when player one wins" do
-    expect(messages.winning_message("Himalee")).to eql("Himalee wins!")
+    expect(messages.winning_message("Himalee")).to eql("🎉  🎉  🎉  Himalee wins! 🎉  🎉  🎉 ")
   end
 
 end

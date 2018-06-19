@@ -1,19 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative "display"
-require_relative "player"
-require_relative "messages"
-require_relative "game"
-require_relative "rules"
-require_relative "console"
-require_relative "move_validator"
+require_relative "session"
 
-rules = Rules.new
 move_validator = MoveValidator.new
 console = Console.new(move_validator)
-messages = Messages.new
-display = Display.new(console, messages)
-player_one = HumanPlayer.new("Himalee", console)
-player_two = ComputerPlayer.new("Computer")
-game = Game.new(player_one, player_two, display, rules)
-game.play
+session = Session.new(console)
+session.start

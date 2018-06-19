@@ -15,12 +15,22 @@ class Console
   end
 
   def validated_input
-    choice = receive
+    choice = receive.downcase
     if !@move_validator.valid_move?(choice)
       present(Messages.new.invalid_input)
       validated_input
     else
       choice
+    end
+  end
+
+  def valid_game_type
+    game_type = receive
+    if !@move_validator.valid_game_type?(game_type)
+      present(Messages.new.game_mode)
+      valid_game_type
+    else
+      game_type
     end
   end
 end
