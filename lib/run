@@ -2,5 +2,7 @@
 
 require_relative "session"
 
-session = Session.new
+move_validator = MoveValidator.new
+console = Console.new(move_validator)
+session = Session.new(console)
 session.start

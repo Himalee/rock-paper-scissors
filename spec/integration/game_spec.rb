@@ -47,7 +47,7 @@ describe Game do
       set_up = SetUp.new(console)
       game = Game.new(display, @rules, set_up)
       game.play
-      expect(@output.string).to include("Please enter 'rock', 'paper' or 'scissors'", "Daisy wins")
+      expect(@output.string).to include("Please enter 'rock' 💎 , 'paper' 📖  or 'scissors' ✂️ ", "Daisy wins")
     end
   end
 end

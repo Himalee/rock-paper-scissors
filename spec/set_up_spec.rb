@@ -3,7 +3,6 @@ require "human_player"
 require "computer_player"
 require "move_validator"
 require "console"
-require "player_factory"
 
 describe SetUp do
 
@@ -14,19 +13,19 @@ describe SetUp do
   end
 
   it "returns player types for human vs human" do
-    player = @set_up.players("1")
+    player = @set_up.game_mode("1")
     expect(player[0]).to be_a(HumanPlayer)
     expect(player[1]).to be_a(HumanPlayer)
   end
 
   it "returns player types for human vs computer" do
-    player = @set_up.players("2")
+    player = @set_up.game_mode("2")
     expect(player[0]).to be_a(HumanPlayer)
     expect(player[1]).to be_a(ComputerPlayer)
   end
 
   it "returns player types for human vs computer" do
-    player = @set_up.players("3")
+    player = @set_up.game_mode("3")
     expect(player[0]).to be_a(ComputerPlayer)
     expect(player[1]).to be_a(HumanPlayer)
   end

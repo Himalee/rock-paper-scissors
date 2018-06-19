@@ -18,7 +18,7 @@ class Game
   def play
     @display.welcome_users
     @display.choose_player
-    player = @set_up.players(@display.sets_up_game)
+    player = @set_up.game_mode(@display.sets_up_game)
     player_turn(player[0])
     player_turn(player[1])
     result(player[0], player[1])

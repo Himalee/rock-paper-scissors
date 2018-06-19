@@ -24,7 +24,7 @@ class SetUp
     [get_player('computer', 1), get_player('human', 2)]
   end
 
-  def players(choice)
+  def game_mode(choice)
     if choice == "1"
       human_vs_human
     elsif choice == "2"
