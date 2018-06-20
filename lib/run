@@ -2,7 +2,8 @@
 
 require_relative "session"
 
+messages = Messages.new
 move_validator = MoveValidator.new
-console = Console.new
-session = Session.new(console)
+display = Display.new(messages, move_validator)
+session = Session.new(display)
 session.start

@@ -1,6 +1,6 @@
 class Display
 
-  def initialize(console, messages, move_validator)
+  def initialize(console = Console.new, messages, move_validator)
     @console = console
     @messages = messages
     @move_validator = move_validator
