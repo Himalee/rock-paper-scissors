@@ -7,7 +7,7 @@ class HumanPlayer < Player
     @display = display
   end
 
-  def get_input
+  def get_player_move
     @player_input = @display.validated_input
   end
 

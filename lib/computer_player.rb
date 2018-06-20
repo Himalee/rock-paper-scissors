@@ -2,7 +2,7 @@ require_relative "player"
 
 class ComputerPlayer < Player
 
-  def get_input
+  def get_player_move
     random_hand_gesture
   end
 

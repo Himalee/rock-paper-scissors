@@ -9,6 +9,6 @@ describe HumanPlayer do
     console = Console.new(output, input)
     display = Display.new(console, messages, move_validator)
     human_player = HumanPlayer.new(1, display)
-    expect(human_player.get_input).to eql("rock")
+    expect(human_player.get_player_move).to eql("rock")
   end
 end

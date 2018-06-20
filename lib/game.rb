@@ -29,7 +29,7 @@ class Game
     @display.get_name(player.position)
     player.get_player_name
     @display.prompt_user_for_input(player.player_name)
-    player.get_input
+    player.get_player_move
     @display.show_move(player.player_input)
   end
 
