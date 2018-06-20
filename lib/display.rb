@@ -1,12 +1,17 @@
 class Display
 
-  def initialize(console, messages)
+  def initialize(console, messages, move_validator)
     @console = console
     @messages = messages
+    @move_validator = move_validator
   end
 
   def welcome_users
     @console.present(@messages.welcome_message)
+  end
+
+  def input_player_name
+    @console.receive
   end
 
   def prompt_user_for_input(player)
@@ -41,7 +46,23 @@ class Display
     @console.present(@messages.game_mode)
   end
 
-  def sets_up_game
-    @console.valid_game_type
+  def validated_input
+    choice = @console.receive.downcase
+    if !@move_validator.valid_move?(choice)
+      @console.present(@messages.invalid_input)
+      validated_input
+    else
+      choice
+    end
+  end
+
+  def valid_game_type
+    game_type = @console.receive
+    if !@move_validator.valid_game_type?(game_type)
+      @console.present(@messages.game_mode)
+      valid_game_type
+    else
+      game_type
+    end
   end
 end

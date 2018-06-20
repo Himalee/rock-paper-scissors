@@ -3,6 +3,6 @@
 require_relative "session"
 
 move_validator = MoveValidator.new
-console = Console.new(move_validator)
+console = Console.new
 session = Session.new(console)
 session.start

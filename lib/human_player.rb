@@ -2,16 +2,16 @@ require_relative "player"
 
 class HumanPlayer < Player
 
-  def initialize(position, console)
+  def initialize(position, display)
     super(position)
-    @console = console
+    @display = display
   end
 
   def get_input
-    @player_input = @console.validated_input
+    @player_input = @display.validated_input
   end
 
   def get_player_name
-    @player_name = @console.receive
+    @player_name = @display.input_player_name
   end
 end

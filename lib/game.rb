@@ -5,20 +5,21 @@ require_relative "human_player"
 require_relative "computer_player"
 require_relative "rules"
 require_relative "move_validator"
-require_relative "set_up"
+require_relative "game_mode"
+require_relative "player_factory"
 
 class Game
 
-  def initialize(display, rules, set_up)
+  def initialize(display, rules, game_mode)
     @display = display
     @rules = rules
-    @set_up = set_up
+    @game_mode = game_mode
   end
 
   def play
     @display.welcome_users
     @display.choose_player
-    player = @set_up.game_mode(@display.sets_up_game)
+    player = @game_mode.create_players(@display.valid_game_type)
     player_turn(player[0])
     player_turn(player[1])
     result(player[0], player[1])

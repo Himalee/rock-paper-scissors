@@ -5,7 +5,8 @@ require_relative "game"
 require_relative "rules"
 require_relative "console"
 require_relative "move_validator"
-require_relative "set_up"
+require_relative "game_mode"
+require_relative "player_factory"
 
 class Session
 
@@ -16,9 +17,11 @@ class Session
   def start
     rules = Rules.new
     messages = Messages.new
-    display = Display.new(@console, messages)
-    set_up = SetUp.new(@console)
-    game = Game.new(display, rules, set_up)
+    move_validator = MoveValidator.new
+    display = Display.new(@console, messages, move_validator)
+    player_factory = PlayerFactory.new(display)
+    game_mode = GameMode.new(player_factory)
+    game = Game.new(display, rules, game_mode)
     game.play
     display.replay?
     if display.play_again

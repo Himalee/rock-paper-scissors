@@ -1,12 +1,14 @@
-class SetUp
+require_relative "console"
 
-  def initialize(console)
-    @console = console
+class PlayerFactory
+
+  def initialize(display)
+    @display = display
   end
 
   def get_player(type, position)
     if type == 'human'
-      HumanPlayer.new(position, @console)
+      HumanPlayer.new(position, @display)
     elsif type == 'computer'
       ComputerPlayer.new(position)
     end
@@ -22,15 +24,5 @@ class SetUp
 
   def computer_vs_human
     [get_player('computer', 1), get_player('human', 2)]
-  end
-
-  def game_mode(choice)
-    if choice == "1"
-      human_vs_human
-    elsif choice == "2"
-      human_vs_computer
-    elsif choice == "3"
-      computer_vs_human
-    end
   end
 end
