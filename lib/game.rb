@@ -19,10 +19,10 @@ class Game
   def play
     @display.welcome_users
     @display.choose_player
-    player = @game_mode.create_players(@display.valid_game_type)
-    player_turn(player[0])
-    player_turn(player[1])
-    result(player[0], player[1])
+    players = @game_mode.create_players(@display.valid_game_type)
+    player_turn(players[0])
+    player_turn(players[1])
+    result(players[0], players[1])
   end
 
   def player_turn(player)
