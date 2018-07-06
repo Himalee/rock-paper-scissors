@@ -11,45 +11,41 @@ describe Game do
 
   context "human vs human" do
     it "runs game with rock and paper" do
-      input = StringIO.new("1\nHimalee\nrock\nDaisy\npaper")
+      input = StringIO.new("Himalee\nrock\nDaisy\npaper")
       console = Console.new(@output, input)
       display = Display.new(console, @messages, @move_validator)
-      player_factory = PlayerFactory.new(display)
-      game_mode = GameMode.new(player_factory)
-      game = Game.new(display, @rules, game_mode)
+      players = [HumanPlayer.new(1, display), HumanPlayer.new(2, display)]
+      game = Game.new(display, @rules, players)
       game.play
       expect(@output.string).to include("Daisy wins")
     end
 
     it "runs game with rock and paper" do
-      input = StringIO.new("1\nHimalee\nscissors\nDaisy\npaper")
+      input = StringIO.new("Himalee\nscissors\nDaisy\npaper")
       console = Console.new(@output, input)
       display = Display.new(console, @messages, @move_validator)
-      player_factory = PlayerFactory.new(display)
-      game_mode = GameMode.new(player_factory)
-      game = Game.new(display, @rules, game_mode)
+      players = [HumanPlayer.new(1, display), HumanPlayer.new(2, display)]
+      game = Game.new(display, @rules, players)
       game.play
       expect(@output.string).to include("Himalee wins")
     end
 
     it "runs game with rock and rock" do
-      input = StringIO.new("1\nHimalee\nrock\nDaisy\nrock")
+      input = StringIO.new("Himalee\nrock\nDaisy\nrock")
       console = Console.new(@output, input)
       display = Display.new(console, @messages, @move_validator)
-      player_factory = PlayerFactory.new(display)
-      game_mode = GameMode.new(player_factory)
-      game = Game.new(display, @rules, game_mode)
+      players = [HumanPlayer.new(1, display), HumanPlayer.new(2, display)]
+      game = Game.new(display, @rules, players)
       game.play
       expect(@output.string).to include("It's a draw!")
     end
 
     it "runs game with one invalid input" do
-      input = StringIO.new("1\nHimalee\nrock\nDaisy\nhello\npaper")
+      input = StringIO.new("Himalee\nrock\nDaisy\nhello\npaper")
       console = Console.new(@output, input)
       display = Display.new(console, @messages, @move_validator)
-      player_factory = PlayerFactory.new(display)
-      game_mode = GameMode.new(player_factory)
-      game = Game.new(display, @rules, game_mode)
+      players = [HumanPlayer.new(1, display), HumanPlayer.new(2, display)]
+      game = Game.new(display, @rules, players)
       game.play
       expect(@output.string).to include("Please enter 'rock' 💎 , 'paper' 📖  or 'scissors' ✂️ ", "Daisy wins")
     end

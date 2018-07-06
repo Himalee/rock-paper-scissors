@@ -10,19 +10,16 @@ require_relative "player_factory"
 
 class Game
 
-  def initialize(display, rules, game_mode)
+  def initialize(display, rules, players)
     @display = display
     @rules = rules
-    @game_mode = game_mode
+    @players = players
   end
 
   def play
-    @display.welcome_users
-    @display.choose_player
-    players = @game_mode.create_players(@display.valid_game_type)
-    player_turn(players[0])
-    player_turn(players[1])
-    result(players[0], players[1])
+    player_turn(@players[0])
+    player_turn(@players[1])
+    result(@players[0], @players[1])
   end
 
   def player_turn(player)

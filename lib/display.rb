@@ -65,4 +65,8 @@ class Display
       game_type
     end
   end
+
+  def good_bye
+    @console.present(@messages.end_game)
+  end
 end

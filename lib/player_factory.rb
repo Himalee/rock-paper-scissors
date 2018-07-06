@@ -6,23 +6,13 @@ class PlayerFactory
     @display = display
   end
 
-  def get_player(type, position)
-    if type == 'human'
-      HumanPlayer.new(position, @display)
-    elsif type == 'computer'
-      ComputerPlayer.new(position)
+  def create_players(choice)
+    if choice == "1"
+      [HumanPlayer.new(1, @display), HumanPlayer.new(2, @display)]
+    elsif choice == "2"
+      [HumanPlayer.new(1, @display), ComputerPlayer.new(2)]
+    elsif choice == "3"
+      [ComputerPlayer.new(1), HumanPlayer.new(2, @display)]
     end
-  end
-
-  def human_vs_computer
-    [get_player('human', 1), get_player('computer', 2)]
-  end
-
-  def human_vs_human
-    [get_player('human', 1), get_player('human', 2)]
-  end
-
-  def computer_vs_human
-    [get_player('computer', 1), get_player('human', 2)]
   end
 end
